@@ -1,10 +1,10 @@
 {
-  "name": "TOOLZIP — Everyday Tools",
+  "name": "TOOLZIP — Everyday Toolkit",
   "short_name": "TOOLZIP",
-  "description": "로그인 없이 사용하는 도구 모음",
+  "description": "필요한 도구를 한곳에서",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f7f7fb",
-  "theme_color": "#6558e8",
+  "background_color": "#f6f7fb",
+  "theme_color": "#101323",
   "icons": []
 }
