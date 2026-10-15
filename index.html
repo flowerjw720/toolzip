@@ -3,37 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#6558e8">
-<meta name="description" content="로그인 없이 사용하는 올인원 도구 모음 TOOLZIP">
+<meta name="theme-color" content="#101323">
+<meta name="description" content="필요한 도구를 한곳에서, TOOLZIP">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
-<title>TOOLZIP — 필요한 도구, 한곳에서</title>
+<title>TOOLZIP — 필요한 도구를 한곳에서</title>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#"><span class="brandmark">T</span><span>TOOLZIP<small>EVERYDAY TOOLS</small></span></a>
-  <div class="topright"><span id="network" class="network">● 연결 확인 중</span><button id="theme" class="iconbtn" aria-label="다크 모드">◐</button></div>
-</header>
-<main>
-  <section class="hero">
-    <div class="eyebrow">YOUR EVERYDAY TOOLKIT</div>
-    <h1>필요한 도구,<br><span>한곳에서.</span></h1>
-    <p>공부부터 일상까지. 로그인 없이, 빠르게 꺼내 쓰세요.</p>
-    <div class="search"><span>⌕</span><input id="search" placeholder="어떤 도구가 필요하세요?  예: 계산기, 랜덤, 번역"><kbd>검색</kbd></div>
-    <div class="quick"><button data-q="글자 수">글자 수 세기</button><button data-q="계산기">계산기</button><button data-q="랜덤">랜덤 도구</button><button data-q="타이머">타이머</button></div>
-  </section>
-  <section class="section">
-    <div class="sectionhead"><div><h2 id="listTitle">추천 도구</h2><p id="listDesc">자주 쓰는 도구부터 시작해 보세요.</p></div><button id="toggleAll" class="textbtn">전체 도구 보기 ↗</button></div>
-    <div id="grid" class="grid"></div>
-  </section>
-  <section class="section">
-    <div class="sectionhead"><div><h2>내 TOOLZIP</h2><p>즐겨찾기와 최근 사용 기록은 이 기기에 저장돼요.</p></div></div>
-    <div class="personal"><article><span class="smallicon">★</span><b>즐겨찾기</b><p id="favSummary">아직 즐겨찾기가 없어요.</p></article><article><span class="smallicon">↻</span><b>최근 사용</b><p id="recentSummary">도구를 실행하면 여기에 표시돼요.</p></article><article><span class="smallicon">⌁</span><b>오프라인 우선</b><p>계산·랜덤·메모 등 핵심 도구는 브라우저 안에서 작동해요.</p></article></div>
-  </section>
-  <section class="section privacy"><h2>간단하고, 가볍게.</h2><p>로그인 없이 사용하세요. 메모·즐겨찾기·할 일은 이 브라우저에 저장됩니다. 번역은 온라인 서비스가 필요합니다.</p><button id="export" class="action secondary">내 설정 백업하기</button><button id="clear" class="action ghost">즐겨찾기·기록 초기화</button></section>
-  <footer>TOOLZIP <span>· 로그인 불필요 · 모바일·PC 지원 · 오프라인 지원</span></footer>
-</main>
-<div id="modal" class="modal hidden"><section class="modalbox"><div class="modalhead"><div><div class="eyebrow" id="toolCat">TOOL</div><h2 id="toolTitle">도구</h2></div><button id="close" class="iconbtn" aria-label="닫기">✕</button></div><div id="toolBody"></div><div id="toolNote" class="note"></div></section></div>
-<div id="toast" class="toast"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="TOOLZIP 홈"><span class="brand-mark">T</span><span>TOOL<span class="brand-light">ZIP</span><small>TOOLS FOR EVERYDAY</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" data-view="home"><span>⌂</span> 전체 도구</button>
+    <button class="nav-item" data-view="favorites"><span>☆</span> 즐겨찾기</button>
+    <button class="nav-item" data-view="recent"><span>◷</span> 최근 사용</button>
+    <div class="side-label">CATEGORIES</div>
+    <button class="nav-item" data-category="계산"><span>＋</span> 계산 & 변환</button>
+    <button class="nav-item" data-category="텍스트"><span>≡</span> 텍스트 도구</button>
+    <button class="nav-item" data-category="랜덤"><span>◉</span> 랜덤 & 게임</button>
+    <button class="nav-item" data-category="생산성"><span>✓</span> 공부 & 생산성</button>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="connectionText">상태 확인 중</span><button id="themeToggle" title="테마 전환">◐</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="메뉴">☰</button>
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="crumb">전체 도구</strong></div>
+      <div class="top-actions"><button class="icon-button" id="quickSearch" title="검색">⌕</button><div class="avatar">T</div></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR EVERYDAY TOOLKIT</div>
+        <h1>필요한 도구를,<br><em>한곳에서 간편하게.</em></h1>
+        <p>복잡한 과정은 줄이고, 해야 할 일에 집중하세요.</p>
+        <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="어떤 도구가 필요하세요?" autocomplete="off"><kbd>↵</kbd></div>
+        <div class="hero-meta"><span>✦ 로그인 없이 사용</span><span>↗ 브라우저에서 바로 실행</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-tile tile-a">%</div><div class="hero-tile tile-b">↗</div><div class="hero-tile tile-c">✳</div><div class="hero-core">T<span>+</span></div></div>
+    </section>
+
+    <section class="tool-section">
+      <div class="section-heading"><div><div class="eyebrow muted">EXPLORE</div><h2 id="sectionTitle">모든 도구 <span id="toolCount"></span></h2></div><div class="view-toggle"><button class="view-btn selected" aria-label="카드 보기">▦</button></div></div>
+      <div id="toolGrid" class="tool-grid"></div>
+      <div id="emptyState" class="empty-state hidden"><div class="empty-icon">⌕</div><h3>찾는 도구가 없어요</h3><p>다른 검색어를 입력하거나 카테고리를 바꿔 보세요.</p></div>
+    </section>
+    <footer><span class="footer-brand">TOOLZIP</span><span>작은 도구가 일상을 더 편하게.</span><span id="year"></span></footer>
+  </main>
+</div>
+
+<div class="modal-backdrop hidden" id="toolModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-top"><div><div class="eyebrow muted" id="modalCategory">TOOL</div><h2 id="modalTitle">도구</h2></div><button class="close-modal" id="closeModal" aria-label="닫기">×</button></div>
+    <div id="modalBody" class="modal-body"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
