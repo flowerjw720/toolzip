@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6558e8">
+<meta name="description" content="로그인 없이 사용하는 올인원 도구 모음 TOOLZIP">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>TOOLZIP — 필요한 도구, 한곳에서</title>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brandmark">T</span><span>TOOLZIP<small>EVERYDAY TOOLS</small></span></a>
+  <div class="topright"><span id="network" class="network">● 연결 확인 중</span><button id="theme" class="iconbtn" aria-label="다크 모드">◐</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">YOUR EVERYDAY TOOLKIT</div>
+    <h1>필요한 도구,<br><span>한곳에서.</span></h1>
+    <p>공부부터 일상까지. 로그인 없이, 빠르게 꺼내 쓰세요.</p>
+    <div class="search"><span>⌕</span><input id="search" placeholder="어떤 도구가 필요하세요?  예: 계산기, 랜덤, 번역"><kbd>검색</kbd></div>
+    <div class="quick"><button data-q="글자 수">글자 수 세기</button><button data-q="계산기">계산기</button><button data-q="랜덤">랜덤 도구</button><button data-q="타이머">타이머</button></div>
+  </section>
+  <section class="section">
+    <div class="sectionhead"><div><h2 id="listTitle">추천 도구</h2><p id="listDesc">자주 쓰는 도구부터 시작해 보세요.</p></div><button id="toggleAll" class="textbtn">전체 도구 보기 ↗</button></div>
+    <div id="grid" class="grid"></div>
+  </section>
+  <section class="section">
+    <div class="sectionhead"><div><h2>내 TOOLZIP</h2><p>즐겨찾기와 최근 사용 기록은 이 기기에 저장돼요.</p></div></div>
+    <div class="personal"><article><span class="smallicon">★</span><b>즐겨찾기</b><p id="favSummary">아직 즐겨찾기가 없어요.</p></article><article><span class="smallicon">↻</span><b>최근 사용</b><p id="recentSummary">도구를 실행하면 여기에 표시돼요.</p></article><article><span class="smallicon">⌁</span><b>오프라인 우선</b><p>계산·랜덤·메모 등 핵심 도구는 브라우저 안에서 작동해요.</p></article></div>
+  </section>
+  <section class="section privacy"><h2>간단하고, 가볍게.</h2><p>로그인 없이 사용하세요. 메모·즐겨찾기·할 일은 이 브라우저에 저장됩니다. 번역은 온라인 서비스가 필요합니다.</p><button id="export" class="action secondary">내 설정 백업하기</button><button id="clear" class="action ghost">즐겨찾기·기록 초기화</button></section>
+  <footer>TOOLZIP <span>· 로그인 불필요 · 모바일·PC 지원 · 오프라인 지원</span></footer>
+</main>
+<div id="modal" class="modal hidden"><section class="modalbox"><div class="modalhead"><div><div class="eyebrow" id="toolCat">TOOL</div><h2 id="toolTitle">도구</h2></div><button id="close" class="iconbtn" aria-label="닫기">✕</button></div><div id="toolBody"></div><div id="toolNote" class="note"></div></section></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
